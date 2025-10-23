@@ -102,11 +102,11 @@ function Veiculos(): JSX.Element {
         <div className="absolute inset-0 bg-[#2A2A2A]" />
         
         {/* Asset vermelho - esquerda */}
-        <div aria-hidden="true" className="absolute inset-0">
+        <div aria-hidden="true" className="absolute inset-0 opacity-30 md:opacity-100">
           <img
             src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Veiculos/Ativo%2018@4x.webp"
             alt=""
-            className="absolute left-0 bottom-0 h-full w-auto object-contain object-left-bottom"
+            className="absolute left-0 bottom-0 h-full w-auto object-contain object-left-bottom scale-75 sm:scale-100"
             loading="lazy"
           />
         </div>
@@ -116,7 +116,7 @@ function Veiculos(): JSX.Element {
           <img
             src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Veiculos/Ativo%2019@4x.webp"
             alt=""
-            className="absolute right-0 top-0 h-auto w-auto max-h-[29vh] max-w-[155px] object-contain"
+            className="absolute right-0 top-0 h-auto w-auto max-h-[20vh] sm:max-h-[29vh] max-w-[155px] object-contain"
             loading="lazy"
           />
         </div>
@@ -147,7 +147,7 @@ function Veiculos(): JSX.Element {
       >
         {/* Título principal */}
         <motion.div
-          className="text-left"
+          className="text-left px-4 sm:px-0"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
@@ -156,14 +156,14 @@ function Veiculos(): JSX.Element {
           <img
             src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Veiculos/Ativo%2020@4x.webp"
             alt="Veículos e Infraestrutura"
-            className="h-auto w-full max-w-[1000px]"
+            className="h-auto w-full max-w-[280px] sm:max-w-[500px] lg:max-w-[1000px] object-contain"
             loading="eager"
           />
         </motion.div>
 
         {/* Grid de 4 colunas */}
         <motion.div
-          className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4 lg:gap-10 px-4 sm:px-6 lg:px-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -196,7 +196,7 @@ function Veiculos(): JSX.Element {
               <img
                 src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Veiculos/Ativo%2021@4x.webp"
                 alt="Motorhome"
-                className="h-auto w-full"
+                className="h-auto w-full object-contain"
               />
             </a>
             <p className="font-hero-body text-[13px] leading-[1.3] text-white">
@@ -206,7 +206,7 @@ function Veiculos(): JSX.Element {
               <img
                 src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Veiculos/Ativo%2025@4x.png"
                 alt="Van Iveco Daily"
-                className="h-auto w-full object-contain"
+                className="h-auto w-full object-contain max-w-full"
               />
             </a>
           </motion.article>
@@ -229,7 +229,7 @@ function Veiculos(): JSX.Element {
               <img
                 src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Veiculos/Ativo%2022@4x.webp"
                 alt="Moto Yamaha XTZ 150 (2024)"
-                className="h-auto w-full"
+                className="h-auto w-full object-contain"
               />
             </a>
             <p className="font-hero-body text-[13px] leading-[1.3] text-white">
@@ -239,7 +239,7 @@ function Veiculos(): JSX.Element {
               <img
                 src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Veiculos/Ativo%2026@4x.png"
                 alt="Moto Yamaha XTZ 150"
-                className="h-auto w-full object-contain"
+                className="h-auto w-full object-contain max-w-full"
               />
             </a>
           </motion.article>
@@ -262,7 +262,7 @@ function Veiculos(): JSX.Element {
               <img
                 src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Veiculos/Ativo%2023@4x.webp"
                 alt="Setup Tecnológico"
-                className="h-auto w-full"
+                className="h-auto w-full object-contain"
               />
             </a>
             <p className="font-hero-body text-[13px] leading-[1.3] text-white">
@@ -272,7 +272,7 @@ function Veiculos(): JSX.Element {
               <img
                 src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Veiculos/Ativo%2027@4x.png"
                 alt="Setup Tecnológico"
-                className="h-auto w-full object-contain"
+                className="h-auto w-full object-contain max-w-full"
               />
             </a>
           </motion.article>
@@ -295,7 +295,7 @@ function Veiculos(): JSX.Element {
               <img
                 src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Veiculos/Ativo%2024@4x.webp"
                 alt="Estrutura Studio"
-                className="h-auto w-full"
+                className="h-auto w-full object-contain"
               />
             </a>
             <p className="font-hero-body text-[13px] leading-[1.3] text-white">
@@ -305,7 +305,7 @@ function Veiculos(): JSX.Element {
               <img
                 src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Veiculos/Ativo%2028@4x.png"
                 alt="Estrutura Studio"
-                className="h-auto w-full object-contain"
+                className="h-auto w-full object-contain max-w-full"
               />
             </a>
           </motion.article>

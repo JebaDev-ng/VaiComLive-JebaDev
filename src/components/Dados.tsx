@@ -113,7 +113,7 @@ const Dados = () => {
         src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Dados/Ativo%2025.png"
         alt=""
         aria-hidden="true"
-        className="absolute bottom-0 left-0 z-0 h-full w-auto object-contain"
+        className="absolute bottom-0 left-0 z-0 h-full w-auto object-contain opacity-20 sm:opacity-100 scale-50 sm:scale-75 lg:scale-100"
         loading="lazy"
       />
 
@@ -136,7 +136,7 @@ const Dados = () => {
                   <img 
                     src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Dados/dados-e-alcance.png" 
                     alt="Dados e Alcance" 
-                    className="h-16 md:h-20 lg:h-24 w-auto object-contain"
+                    className="h-12 sm:h-16 md:h-20 lg:h-24 w-auto object-contain"
                   />
                 </div>
                 <div className="space-y-2">
@@ -149,7 +149,7 @@ const Dados = () => {
                 </div>
               </div>
 
-              <div className="mb-12 grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-19 max-w-6xl">
+              <div className="mb-12 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-6xl">
                 {stats.map((stat, index) => (
                   <div key={index} className="flex justify-center lg:justify-start">
                     <img 
@@ -157,16 +157,16 @@ const Dados = () => {
                       alt={stat.label}
                       className={`h-auto w-full object-contain transition-transform hover:scale-105 ${
                         index === 0 
-                          ? 'max-w-[420px] sm:max-w-[500px] lg:max-w-[580px]' 
-                          : 'max-w-[400px] sm:max-w-[480px] lg:max-w-[550px]'
+                          ? 'max-w-[240px] sm:max-w-[360px] lg:max-w-[580px]' 
+                          : 'max-w-[220px] sm:max-w-[340px] lg:max-w-[550px]'
                       }`}
                     />
                   </div>
                 ))}
               </div>
 
-              <div className="rounded-3xl border border-primary/40 bg-gradient-to-br from-primary/15 via-accent/10 to-primary/15 p-8 text-center md:p-12 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_80px_rgba(225,29,72,0.15)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.5),0_0_100px_rgba(225,29,72,0.25)] transition-all duration-300">
-              <p className="mb-8 text-xl font-semibold leading-relaxed text-white md:text-2xl font-['Inter',sans-serif]">
+              <div className="rounded-3xl border border-primary/40 bg-gradient-to-br from-primary/15 via-accent/10 to-primary/15 p-6 sm:p-8 md:p-10 text-center shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_80px_rgba(225,29,72,0.15)] hover:shadow-[0_12px_48px_rgba(0,0,0,0.5),0_0_100px_rgba(225,29,72,0.25)] transition-all duration-300">
+              <p className="mb-8 text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed text-white font-['Inter',sans-serif]">
                 {t.dados.potential} <span className="text-primary font-bold">{t.dados.potentialBold}</span> {t.dados.potential2} <span className="text-accent font-bold">{t.dados.potential2Bold}</span>.
               </p>
 

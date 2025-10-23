@@ -190,12 +190,13 @@ All colors MUST be HSL.
 
   /* Garante que imagens de background cubram toda a área em mobile */
   @media (max-width: 768px) {
-    section {
+    /* Força backgrounds a cobrirem toda a tela apenas quando necessário */
+    section[data-cover="true"] {
       min-height: 100dvh;
     }
-    
-    /* Força backgrounds a cobrirem toda a tela */
-    section img[alt=""] {
+
+    section img[data-cover="true"],
+    section[data-cover="true"] img[alt=""] {
       object-fit: cover !important;
     }
   }

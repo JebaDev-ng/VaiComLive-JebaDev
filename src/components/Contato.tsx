@@ -92,7 +92,7 @@ const Contato = () => {
         src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Contato/Ativo%2033@300x.png"
         alt=""
         aria-hidden="true"
-        className="absolute bottom-0 left-0 z-0 h-full w-auto object-contain"
+        className="absolute bottom-0 left-0 z-0 h-full w-auto object-contain opacity-10 sm:opacity-100 scale-75 lg:scale-100"
         loading="lazy"
       />
 
@@ -118,7 +118,7 @@ const Contato = () => {
                   <motion.img
                     src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Contato/Ativo%2034.png"
                     alt="Vamos Juntos Nessa Jornada"
-                    className="h-32 md:h-40 lg:h-48 w-auto object-contain"
+                    className="h-24 sm:h-32 md:h-40 lg:h-48 w-auto object-contain"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
@@ -137,18 +137,18 @@ const Contato = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
               >
-                <div className="space-y-6 text-center">
-                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight">
+                <div className="space-y-6 text-center px-4 sm:px-0">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight">
                     {t.contato.headline}{" "}
                     <span className="text-gradient-primary">{t.contato.headlineBold}</span>
                   </h3>
-                  <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                  <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground leading-relaxed">
                     {t.contato.subheadline}
                   </p>
                 </div>
 
                 <motion.div
-                  className="flex justify-center"
+                  className="flex justify-center px-4 sm:px-0"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -156,7 +156,7 @@ const Contato = () => {
                   <Button
                     variant="hero"
                     size="lg"
-                    className="text-2xl px-16 py-10 shadow-2xl"
+                    className="text-lg sm:text-xl md:text-2xl px-8 sm:px-12 md:px-16 py-6 sm:py-8 md:py-10 shadow-2xl min-h-[44px] touch-manipulation"
                     asChild
                   >
                     <a
@@ -164,22 +164,22 @@ const Contato = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Phone className="w-7 h-7 mr-3" />
+                      <Phone className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 mr-2 sm:mr-3" />
                       {t.contato.cta}
                     </a>
                   </Button>
                 </motion.div>
 
-                <div className="pt-6 text-center">
-                  <p className="text-lg text-muted-foreground mb-4">{t.contato.followText}</p>
-                  <div className="flex gap-4 justify-center">
+                <div className="pt-6 text-center px-4 sm:px-0">
+                  <p className="text-base sm:text-lg text-muted-foreground mb-4">{t.contato.followText}</p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     {socialLinks.map((social, index) => (
                       <motion.a
                         key={index}
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-3 rounded-full bg-card/50 backdrop-blur-sm border border-border hover:border-primary transition-all"
+                        className="flex items-center gap-2 px-4 sm:px-6 py-3 rounded-full bg-card/50 backdrop-blur-sm border border-border hover:border-primary transition-all min-h-[44px] touch-manipulation"
                         whileHover={{ scale: 1.08, y: -4 }}
                         whileTap={{ scale: 0.95 }}
                         initial={{ opacity: 0, y: 20 }}

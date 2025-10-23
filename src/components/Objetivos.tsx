@@ -73,7 +73,7 @@ export default function Objetivos() {
         <div className="absolute inset-0 bg-[#1D1D1E]" />
         
         {/* Asset vermelho - esquerda */}
-        <div aria-hidden="true" className="absolute inset-0">
+        <div aria-hidden="true" className="absolute inset-0 opacity-20 md:opacity-100">
           <img
             src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Objetivo/Assets-Objetivo-1.webp"
             alt=""
@@ -83,7 +83,7 @@ export default function Objetivos() {
         </div>
         
         {/* Asset amarelo - direita */}
-        <div aria-hidden="true" className="absolute inset-0">
+        <div aria-hidden="true" className="absolute inset-0 opacity-20 md:opacity-100">
           <img
             src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Objetivo/Assets-Objetivo-2.webp"
             alt=""
@@ -110,7 +110,7 @@ export default function Objetivos() {
         style={{ y: objetivosY, scale: objetivosScale, opacity: objetivosOpacity }}
       >
         <motion.div
-          className="flex w-full flex-col items-center gap-6 text-center"
+          className="flex w-full flex-col items-center gap-6 text-center px-4 sm:px-0"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
@@ -119,13 +119,13 @@ export default function Objetivos() {
           <img
             src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Objetivo/Assets-Objetivo-Titulo.webp"
             alt="Objetivos do projeto"
-            className="w-full max-w-[1100px]"
+            className="w-full max-w-[280px] sm:max-w-[600px] lg:max-w-[1100px] object-contain"
           />
           <div aria-hidden="true" className="h-[4px] w-full max-w-[680px] bg-[#1B3A6F]" />
         </motion.div>
 
         <motion.div
-          className="grid w-full gap-8 text-left sm:grid-cols-2 md:gap-12 lg:grid-cols-4 lg:gap-14"
+          className="grid w-full gap-6 text-left sm:grid-cols-2 sm:gap-8 md:gap-10 lg:grid-cols-4 lg:gap-14 px-4 sm:px-0"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -143,7 +143,7 @@ export default function Objetivos() {
           {objectivesContent.map(({ svgFileName, description }, index) => (
             <motion.article
               key={svgFileName}
-              className="flex flex-col gap-5"
+              className="flex flex-col gap-5 items-center sm:items-start"
               variants={{
                 hidden: { opacity: 0, y: 30 },
                 visible: {
@@ -157,9 +157,9 @@ export default function Objetivos() {
               <img
                 src={svgFileName}
                 alt={description}
-                className="w-full max-w-[280px]"
+                className="w-full max-w-full sm:max-w-[240px] lg:max-w-[280px] object-contain"
               />
-              <p className="text-[15px] leading-[1.5] text-white md:text-[16px]">
+              <p className="text-[15px] leading-[1.5] text-white md:text-[16px] text-center sm:text-left">
                 {description}
               </p>
             </motion.article>

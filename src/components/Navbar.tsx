@@ -97,7 +97,7 @@ function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed left-0 right-0 top-0 z-50 px-4 pt-4 md:px-6 md:pt-6"
+      className="fixed left-0 right-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4 md:px-6 md:pt-6"
     >
       <div className="mx-auto w-full max-w-7xl">
         <motion.div
@@ -124,7 +124,7 @@ function Navbar() {
             className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-red-500/5"
           />
           
-          <div className="relative flex items-center justify-between px-6 py-3 lg:px-8">
+          <div className="relative flex items-center justify-between px-4 py-2.5 sm:px-6 sm:py-3 lg:px-8">
           {/* Brand Indicator */}
           <div className="flex items-center space-x-2">
             <div className="h-3 w-3 rounded-full bg-gradient-to-br from-blue-500 to-red-500 animate-pulse" />
@@ -254,20 +254,23 @@ function Navbar() {
                   <span className="sr-only">Abrir menu</span>
                 </motion.button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[320px] rounded-l-3xl border-l border-white/10 bg-black/95 backdrop-blur-xl p-0">
-                <div className="flex h-full flex-col">
+              <SheetContent 
+                side="right" 
+                className="w-[280px] sm:w-[320px] rounded-l-2xl sm:rounded-l-3xl border-l border-white/15 bg-gradient-to-b from-slate-900/95 via-slate-900/92 to-slate-900/96 backdrop-blur-xl p-0 h-full"
+              >
+                <div className="flex h-full flex-col overflow-hidden">
                   {/* Mobile Header */}
-                  <div className="border-b border-white/10 p-6">
+                  <div className="border-b border-white/10 p-4 sm:p-6">
                     <div className="flex items-center space-x-3">
-                      <div className="h-4 w-4 rounded-full bg-gradient-to-br from-blue-500 to-red-500 animate-pulse" />
-                      <span className="text-lg font-bold tracking-wider text-white">
+                      <div className="h-3 w-3 sm:h-4 sm:w-4 rounded-full bg-gradient-to-br from-blue-500 to-red-500 animate-pulse" />
+                      <span className="text-base sm:text-lg font-bold tracking-wider text-white">
                         VAI COM LIVE
                       </span>
                     </div>
                   </div>
 
                   {/* Mobile Navigation Items */}
-                  <div className="flex-1 space-y-2 p-6">
+                  <div className="flex-1 space-y-1 sm:space-y-2 p-4 sm:p-6 overflow-y-auto">
                     {navItems.map((item) => (
                       <a
                         key={item.href}
@@ -276,7 +279,7 @@ function Navbar() {
                           e.preventDefault();
                           handleNavClick(item.href);
                         }}
-                        className="block rounded-xl px-4 py-3 text-base font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-white"
+                        className="block rounded-lg sm:rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-white"
                       >
                         {item.label}
                       </a>
@@ -285,18 +288,18 @@ function Navbar() {
                     {/* CTA Button - Mobile */}
                     <Button
                       onClick={() => handleNavClick("#contato")}
-                      className="mt-4 w-full rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 py-3 text-base font-semibold text-white shadow-lg"
+                      className="mt-3 sm:mt-4 w-full rounded-lg sm:rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-white shadow-lg"
                     >
                       {t.nav.faleConosco}
                     </Button>
                   </div>
 
                   {/* Mobile Language Selector */}
-                  <div className="border-t border-white/10 p-6">
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-white/50">
+                  <div className="border-t border-white/10 p-4 sm:p-6">
+                    <p className="mb-2 sm:mb-3 text-xs font-semibold uppercase tracking-wider text-white/50">
                       Idioma
                     </p>
-                    <div className="space-y-2">
+                    <div className="space-y-1 sm:space-y-2">
                       {languages.map((lang) => (
                         <button
                           key={lang.code}
@@ -304,13 +307,13 @@ function Navbar() {
                             setLanguage(lang.code);
                             setMobileMenuOpen(false);
                           }}
-                          className={`flex w-full items-center rounded-xl px-4 py-3 text-sm transition-colors ${
+                          className={`flex w-full items-center rounded-lg sm:rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 text-xs sm:text-sm transition-colors ${
                             currentLanguage.code === lang.code
                               ? "bg-blue-600/20 text-blue-400 font-semibold"
                               : "text-white/80 hover:bg-white/10 hover:text-white"
                           }`}
                         >
-                          <span className="mr-3 text-base">{lang.flag}</span>
+                          <span className="mr-2 sm:mr-3 text-sm sm:text-base">{lang.flag}</span>
                           {lang.name}
                         </button>
                       ))}

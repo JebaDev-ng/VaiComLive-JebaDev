@@ -84,7 +84,7 @@ const PartnershipImage = () => (
     <motion.img
       src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Parcerias/Ativo%2032@300x@4x.webp"
       alt="Parceria"
-      className="w-full max-w-sm md:max-w-md lg:max-w-[560px] h-auto object-contain"
+      className="w-full max-w-[200px] sm:max-w-[300px] md:max-w-md lg:max-w-[560px] h-auto object-contain"
       {...IMAGE_FLOAT_ANIMATION}
     />
   </div>
@@ -107,7 +107,7 @@ const HeaderSection = () => (
     <img
       src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Parcerias/OPORTUNIDADES%20DE%20PARCERIA@4x.webp"
       alt="Oportunidades de Parceria"
-      className="h-20 md:h-24 lg:h-32 w-auto object-contain"
+      className="h-14 sm:h-20 md:h-24 lg:h-32 w-auto object-contain"
     />
   </div>
 );
@@ -175,18 +175,18 @@ const OpportunityCard = ({ opportunity, index }: OpportunityCardProps) => (
     transition={{ duration: 0.5, delay: index * 0.1 }}
   >
     <Card className="bg-card/50 backdrop-blur-sm border-border hover:border-primary transition-all duration-300 group">
-      <CardContent className="p-6">
+      <CardContent className="p-4 sm:p-5 lg:p-6">
         <div className="flex items-center gap-4">
-          <div className={`flex-shrink-0 w-16 h-16 rounded-xl gradient-${opportunity.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
-            <opportunity.icon className="w-8 h-8 text-primary-foreground" strokeWidth={1.5} />
+          <div className={`flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl gradient-${opportunity.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+            <opportunity.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-primary-foreground" strokeWidth={1.5} />
           </div>
           <div className="flex-shrink-0">
-            <div className={`text-5xl font-black opacity-20 text-${opportunity.color}`}>
+            <div className={`text-3xl sm:text-4xl lg:text-5xl font-black opacity-20 text-${opportunity.color}`}>
               {opportunity.number}
             </div>
           </div>
           <div className="flex-1 space-y-1">
-            <h3 className="text-xl md:text-2xl font-bold">{opportunity.title}</h3>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold">{opportunity.title}</h3>
             <p className="text-muted-foreground leading-relaxed text-sm md:text-base">{opportunity.description}</p>
           </div>
         </div>

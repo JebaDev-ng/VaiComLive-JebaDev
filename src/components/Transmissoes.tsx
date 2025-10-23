@@ -63,10 +63,10 @@ const Transmissoes = () => {
         className="relative z-10"
         style={{ y: sectionY, scale: sectionScale, opacity: sectionOpacity }}
       >
-  <div className="mx-auto grid w-full max-w-[1600px] grid-cols-1 items-start gap-10 px-6 pb-10 lg:grid-cols-12 lg:gap-14 lg:items-end lg:pb-0">
+  <div className="mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-10 px-4 sm:px-6 pb-6 sm:pb-8 lg:grid-cols-12 lg:gap-14 lg:items-end lg:pb-0">
           {/* Coluna Esquerda: Ícones informativos */}
           <motion.div
-            className="flex w-full max-w-[280px] flex-col gap-5 lg:col-span-3 lg:self-start"
+            className="flex w-full max-w-[180px] sm:max-w-[220px] lg:max-w-[280px] mx-auto lg:mx-0 flex-col gap-3 sm:gap-4 lg:gap-5 lg:col-span-3 lg:self-start"
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.6 }}
@@ -75,23 +75,23 @@ const Transmissoes = () => {
             <img
               src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Transmissoes/Ativo%2019@4x.webp"
               alt={t.transmissoes.alt1}
-              className="w-full"
+              className="w-full object-contain"
             />
             <img
               src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Transmissoes/Ativo%2020@4x.webp"
               alt={t.transmissoes.alt2}
-              className="w-full"
+              className="w-full object-contain"
             />
             <img
               src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Transmissoes/Ativo%2018@4x.webp"
               alt={t.transmissoes.alt3}
-              className="w-full"
+              className="w-full object-contain"
             />
           </motion.div>
 
           {/* Coluna Direita: Imagem principal */}
           <motion.div
-            className="flex w-full items-end justify-center self-end lg:col-span-9 lg:self-end"
+            className="flex w-full items-center justify-center self-end lg:col-span-9 lg:self-end sm:items-end"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.6 }}
@@ -100,7 +100,7 @@ const Transmissoes = () => {
             <img
               src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Transmissoes/Ativo%2021@4x.webp"
               alt={t.transmissoes.altMain}
-              className="w-full max-w-[980px] self-end"
+              className="w-full max-w-full sm:max-w-[600px] lg:max-w-[980px] self-end object-contain"
             />
           </motion.div>
         </div>

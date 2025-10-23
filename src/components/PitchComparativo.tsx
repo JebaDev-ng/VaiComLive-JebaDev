@@ -137,14 +137,14 @@ const PitchComparativo = () => {
       >
         <div className="mx-auto max-w-7xl">
           {/* Header */}
-          <div className="mb-16 text-center">
+          <div className="mb-16 text-center px-4 sm:px-0">
             <div className="mb-4 flex items-center justify-center gap-3">
-              <TrendingUp className="h-10 w-10 text-primary" />
-              <h2 className="text-4xl font-bold text-white md:text-5xl lg:text-6xl font-['Inter',sans-serif]">
+              <TrendingUp className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white font-['Inter',sans-serif]">
                 {t.pitch.title}
               </h2>
             </div>
-            <p className="mx-auto max-w-3xl text-lg text-muted-foreground md:text-xl">
+            <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-muted-foreground">
               {t.pitch.subtitle}
             </p>
           </div>
@@ -152,19 +152,19 @@ const PitchComparativo = () => {
           {/* Tabela Comparativa */}
           <div className="mb-16 overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/5 via-transparent to-accent/5">
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="border-b border-primary/20 bg-primary/10">
-                    <th className="p-4 text-left text-sm font-semibold text-white md:text-base">
+                    <th className="p-3 sm:p-4 text-left text-xs sm:text-sm md:text-base font-semibold text-white">
                       {t.pitch.element}
                     </th>
-                    <th className="p-4 text-center text-sm font-semibold text-primary md:text-base">
+                    <th className="p-3 sm:p-4 text-center text-xs sm:text-sm md:text-base font-semibold text-primary">
                       {t.pitch.vaiComLive}
                     </th>
-                    <th className="p-4 text-center text-sm font-semibold text-muted-foreground md:text-base">
+                    <th className="p-3 sm:p-4 text-center text-xs sm:text-sm md:text-base font-semibold text-muted-foreground">
                       {t.pitch.vloggers}
                     </th>
-                    <th className="p-4 text-center text-sm font-semibold text-muted-foreground md:text-base">
+                    <th className="p-3 sm:p-4 text-center text-xs sm:text-sm md:text-base font-semibold text-muted-foreground">
                       {t.pitch.irlStreamers}
                     </th>
                   </tr>
@@ -179,20 +179,20 @@ const PitchComparativo = () => {
                       viewport={{ once: true }}
                       className="border-b border-primary/10 transition-colors hover:bg-primary/5"
                     >
-                      <td className="p-4 text-sm text-white md:text-base">
+                      <td className="p-3 sm:p-4 text-xs sm:text-sm md:text-base text-white">
                         {row.element}
                       </td>
-                      <td className="p-4">
+                      <td className="p-3 sm:p-4">
                         <div className="flex justify-center">
                           <StatusIcon status={row.vaiComLive} partialText={t.pitch.partial} />
                         </div>
                       </td>
-                      <td className="p-4">
+                      <td className="p-3 sm:p-4">
                         <div className="flex justify-center">
                           <StatusIcon status={row.vloggers} partialText={t.pitch.partial} />
                         </div>
                       </td>
-                      <td className="p-4">
+                      <td className="p-3 sm:p-4">
                         <div className="flex justify-center">
                           <StatusIcon status={row.irlStreamers} partialText={t.pitch.partial} />
                         </div>
