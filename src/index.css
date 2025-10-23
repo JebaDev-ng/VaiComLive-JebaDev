@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent scrollbar jump when opening dropdowns/modals */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@font-face {
+  font-family: "ThunderhousePro";
+  src: url("/fonts/ThunderhousePro/ThunderhousePro.woff2") format("woff2"),
+       url("/fonts/ThunderhousePro/ThunderhousePro.woff") format("woff"),
+       url("/fonts/ThunderhousePro/ThunderhousePro.eot") format("embedded-opentype"),
+       url("/fonts/ThunderhousePro/ThunderhousePro.svg#ThunderhousePro") format("svg");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NTailub";
+  src: url("/fonts/ntailub.ttf") format("truetype");
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 338 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 45 100% 60%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 45 100% 60%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 338 100% 50%;
+
+    --radius: 1rem;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(338 100% 50%), hsl(338 100% 35%));
+    --gradient-accent: linear-gradient(135deg, hsl(45 100% 60%), hsl(30 100% 50%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 8%), hsl(0 0% 4%));
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 338 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 45 100% 60%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 45 100% 60%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 338 100% 50%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .gradient-dark {
+    background: var(--gradient-dark);
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  /* Remove gaps entre seções para backgrounds contínuos */
+  section {
+    @apply block;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Garante que seções adjacentes não tenham espaço */
+  section + section {
+    margin-top: 0;
+  }
+
+  /* Força SVGs a usarem a fonte ThunderhousePro corretamente */
+  svg text {
+    font-family: 'ThunderhousePro', sans-serif !important;
+  }
+
+  /* Garante renderização correta do SVG em mobile */
+  @media (max-width: 768px) {
+    svg text {
+      font-family: 'ThunderhousePro', sans-serif !important;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+
+  /* Fix para mobile - usa dvh ao invés de vh */
+  @supports (height: 100dvh) {
+    .min-h-screen {
+      min-height: 100dvh;
+    }
+  }
+
+  /* Garante que imagens de background cubram toda a área em mobile */
+  @media (max-width: 768px) {
+    section {
+      min-height: 100dvh;
+    }
+    
+    /* Força backgrounds a cobrirem toda a tela */
+    section img[alt=""] {
+      object-fit: cover !important;
+    }
+  }
+
+  /* Previne overflow horizontal em mobile */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Melhora performance de animações em mobile */
+  @media (max-width: 768px) {
+    * {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+  }
+}

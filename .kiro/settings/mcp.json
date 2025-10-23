@@ -1,0 +1,84 @@
+{
+  "mcpServers": {
+    "fetch": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-fetch"
+      ],
+      "env": {},
+      "disabled": false,
+      "autoApprove": [
+        "fetch"
+      ]
+    },
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp",
+        "--api-key",
+        "ctx7sk-bf96a351-608d-409d-ba8e-729a49fff5f8"
+      ],
+      "env": {},
+      "disabled": false,
+      "autoApprove": []
+    },
+    "magic": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@21st-dev/magic@latest"
+      ],
+      "env": {
+        "API_KEY": "5764a0446b62ae6b6414852e5980fd5f3d7baa0cbe3a8884d31cf3bc9025b205"
+      },
+      "disabled": false
+    },
+    "chrome-devtools-mcp": {
+      "command": "npx",
+      "args": [
+        "chrome-devtools-mcp@latest",
+        "--channel",
+        "stable"
+      ],
+      "disabled": false,
+      "autoApprove": [
+        "wait_for",
+        "list_console_messages",
+        "resize_page",
+        "list_pages",
+        "take_screenshot",
+        "list_network_requests",
+        "click",
+        "take_snapshot",
+        "navigate_page"
+      ]
+    },
+    "server-sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@smithery-ai/server-sequential-thinking",
+        "--key",
+        "abbf1765-ddff-46bd-ab73-d2e4036fefe6",
+        "--profile",
+        "decisive-parakeet-OJFaA3"
+      ],
+      "disabled": false
+    },
+    "upstash": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/mcp-server@latest",
+        "--email",
+        "contato@vaicomlive.com.br",
+        "--api-key",
+        "2dc637e5-53b4-4808-b19a-a8b99888cc10"
+      ],
+      "disabled": false
+    }
+  }
+}
