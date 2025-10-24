@@ -39,7 +39,11 @@ const Transmissoes = () => {
   }, [backgroundControls]);
 
   return (
-  <section ref={sectionRef} id="transmissoes" className="relative overflow-hidden bg-[#1D1D1E] pt-24 pb-0 lg:pt-28">
+    <section
+      ref={sectionRef}
+      id="transmissoes"
+      className="relative flex min-h-[calc(100vh-72px)] w-full flex-col items-center justify-end overflow-hidden bg-[#1D1D1E] pt-20 pb-0 sm:pt-24 sm:pb-0 lg:block lg:min-h-0 lg:pt-28 lg:pb-0"
+    >
       <motion.div className="absolute inset-0" style={{ opacity: sectionOpacity }}>
         <div className="absolute inset-0 bg-[#1D1D1E]" />
         <div aria-hidden="true" className="absolute inset-0">
@@ -60,13 +64,13 @@ const Transmissoes = () => {
       </motion.div>
 
       <motion.div
-        className="relative z-10"
+        className="relative z-10 flex w-full justify-center lg:block"
         style={{ y: sectionY, scale: sectionScale, opacity: sectionOpacity }}
       >
-  <div className="mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-10 px-4 sm:px-6 pb-6 sm:pb-8 lg:grid-cols-12 lg:gap-14 lg:items-end lg:pb-0">
+        <div className="mx-auto grid w-full max-w-[1600px] grid-cols-1 items-end justify-items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:items-end lg:justify-items-start lg:gap-14 lg:pb-0">
           {/* Coluna Esquerda: Ícones informativos */}
           <motion.div
-            className="flex w-full max-w-[180px] sm:max-w-[220px] lg:max-w-[280px] mx-auto lg:mx-0 flex-col gap-3 sm:gap-4 lg:gap-5 lg:col-span-3 lg:self-start"
+            className="mx-auto flex w-full max-w-[260px] flex-col items-center gap-5 text-center sm:max-w-[300px] sm:items-start sm:gap-6 sm:text-left lg:mx-0 lg:max-w-[280px] lg:gap-5 lg:col-span-3 lg:self-start lg:text-left"
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.6 }}
@@ -91,7 +95,7 @@ const Transmissoes = () => {
 
           {/* Coluna Direita: Imagem principal */}
           <motion.div
-            className="flex w-full items-center justify-center self-end lg:col-span-9 lg:self-end sm:items-end"
+            className="flex w-full items-end justify-center self-end sm:items-end lg:col-span-9 lg:self-end"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.6 }}
@@ -100,7 +104,7 @@ const Transmissoes = () => {
             <img
               src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Transmissoes/Ativo%2021@4x.webp"
               alt={t.transmissoes.altMain}
-              className="w-full max-w-full sm:max-w-[600px] lg:max-w-[980px] self-end object-contain"
+              className="w-full max-w-[380px] self-end object-contain -mb-6 sm:-mb-8 sm:max-w-[620px] lg:mb-0 lg:max-w-[980px]"
             />
           </motion.div>
         </div>

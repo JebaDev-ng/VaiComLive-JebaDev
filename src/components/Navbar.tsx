@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, Globe, ChevronDown } from "lucide-react";
+import { Menu, Globe, ChevronDown, X } from "lucide-react";
 import { motion, useScroll } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Language } from "@/i18n/translations";
@@ -90,6 +90,10 @@ function Navbar() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handleLanguageClick = (code: Language) => {
+    setLanguage(code);
   };
 
   return (
@@ -237,7 +241,7 @@ function Navbar() {
                     color: isOnLightBackground ? "rgba(0, 0, 0, 0.7)" : "rgba(255, 255, 255, 0.9)",
                   }}
                   transition={{ duration: 0.3 }}
-                  className="rounded-full p-2 transition-all hover:bg-opacity-10 lg:hidden"
+                  className="rounded-full p-2 transition-all hover:bg-opacity-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 lg:hidden"
                   style={{
                     backgroundColor: 'transparent',
                   }}
@@ -249,9 +253,12 @@ function Navbar() {
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = 'transparent';
                   }}
+                  aria-label={t.nav.openMenu}
+                  aria-expanded={mobileMenuOpen}
+                  aria-controls="mobile-navigation"
                 >
                   <Menu className="h-5 w-5" />
-                  <span className="sr-only">Abrir menu</span>
+                  <span className="sr-only">{t.nav.openMenu}</span>
                 </motion.button>
               </SheetTrigger>
               <SheetContent 
@@ -261,64 +268,84 @@ function Navbar() {
                 <div className="flex h-full flex-col overflow-hidden">
                   {/* Mobile Header */}
                   <div className="border-b border-white/10 p-4 sm:p-6">
-                    <div className="flex items-center space-x-3">
-                      <div className="h-3 w-3 sm:h-4 sm:w-4 rounded-full bg-gradient-to-br from-blue-500 to-red-500 animate-pulse" />
-                      <span className="text-base sm:text-lg font-bold tracking-wider text-white">
-                        VAI COM LIVE
-                      </span>
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <div className="h-3 w-3 sm:h-4 sm:w-4 rounded-full bg-gradient-to-br from-blue-500 to-red-500 animate-pulse" />
+                        <span className="text-base sm:text-lg font-bold tracking-wider text-white">
+                          VAI COM LIVE
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {/* Mobile language toggle keeps quick access above the fold */}
+                        <div
+                          className="flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1"
+                          role="group"
+                          aria-label={t.nav.language}
+                        >
+                          {languages.map((lang) => {
+                            const isActive = currentLanguage.code === lang.code;
+                            return (
+                              <button
+                                key={lang.code}
+                                type="button"
+                                onClick={() => handleLanguageClick(lang.code)}
+                                className={`min-w-[48px] rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 ${
+                                  isActive
+                                    ? "bg-blue-600 text-white shadow"
+                                    : "text-white/70 hover:text-white hover:bg-white/10"
+                                }`}
+                                aria-pressed={isActive}
+                              >
+                                {lang.code.toUpperCase()}
+                              </button>
+                            );
+                          })}
+                        </div>
+                        <SheetClose asChild>
+                          <button
+                            type="button"
+                            className="rounded-full p-2 transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                            aria-label={t.nav.closeMenu}
+                          >
+                            <X className="h-4 w-4 text-white" />
+                          </button>
+                        </SheetClose>
+                      </div>
                     </div>
                   </div>
 
                   {/* Mobile Navigation Items */}
-                  <div className="flex-1 space-y-1 sm:space-y-2 p-4 sm:p-6 overflow-y-auto">
-                    {navItems.map((item) => (
-                      <a
-                        key={item.href}
-                        href={item.href}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleNavClick(item.href);
-                        }}
-                        className="block rounded-lg sm:rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-white"
-                      >
-                        {item.label}
-                      </a>
-                    ))}
-                    
-                    {/* CTA Button - Mobile */}
-                    <Button
-                      onClick={() => handleNavClick("#contato")}
-                      className="mt-3 sm:mt-4 w-full rounded-lg sm:rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-white shadow-lg"
-                    >
-                      {t.nav.faleConosco}
-                    </Button>
-                  </div>
-
-                  {/* Mobile Language Selector */}
-                  <div className="border-t border-white/10 p-4 sm:p-6">
-                    <p className="mb-2 sm:mb-3 text-xs font-semibold uppercase tracking-wider text-white/50">
-                      Idioma
-                    </p>
+                  <nav
+                    id="mobile-navigation"
+                    aria-label={t.nav.menu}
+                    className="flex-1 overflow-y-auto p-4 sm:p-6"
+                    role="menu"
+                  >
                     <div className="space-y-1 sm:space-y-2">
-                      {languages.map((lang) => (
+                      {navItems.map((item) => (
                         <button
-                          key={lang.code}
-                          onClick={() => {
-                            setLanguage(lang.code);
-                            setMobileMenuOpen(false);
-                          }}
-                          className={`flex w-full items-center rounded-lg sm:rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 text-xs sm:text-sm transition-colors ${
-                            currentLanguage.code === lang.code
-                              ? "bg-blue-600/20 text-blue-400 font-semibold"
-                              : "text-white/80 hover:bg-white/10 hover:text-white"
-                          }`}
+                          key={item.href}
+                          type="button"
+                          onClick={() => handleNavClick(item.href)}
+                          className="w-full rounded-xl px-3 py-2.5 text-left text-sm font-medium text-white/90 transition sm:px-4 sm:py-3 sm:text-base hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                          role="menuitem"
+                          aria-label={item.label}
                         >
-                          <span className="mr-2 sm:mr-3 text-sm sm:text-base">{lang.flag}</span>
-                          {lang.name}
+                          {item.label}
                         </button>
                       ))}
+
+                      {/* CTA Button - Mobile */}
+                      <Button
+                        type="button"
+                        onClick={() => handleNavClick("#contato")}
+                        className="mt-4 w-full rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 py-3 text-sm font-semibold text-white shadow-lg transition hover:shadow-blue-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 sm:py-3.5 sm:text-base"
+                        aria-label={t.nav.faleConosco}
+                      >
+                        {t.nav.faleConosco}
+                      </Button>
                     </div>
-                  </div>
+                  </nav>
                 </div>
               </SheetContent>
             </Sheet>

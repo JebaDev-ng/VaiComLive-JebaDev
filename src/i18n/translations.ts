@@ -9,7 +9,12 @@ export const translations = {
       dados: "Dados",
       parcerias: "Parcerias",
       contato: "Contato",
-      faleConosco: "Fale Conosco",
+  faleConosco: "Fale Conosco",
+  menu: "Menu",
+  language: "Idioma",
+  close: "Fechar",
+  openMenu: "Abrir menu",
+  closeMenu: "Fechar menu",
     },
     // Hero
     hero: {
@@ -104,10 +109,11 @@ export const translations = {
       opp4: "Product placement orgânico em lives e Reels",
       audienceTitle: "Público-alvo",
       audienceDesc: "Jovens e adultos",
-      audienceAge: "(18 a 45 anos)",
+  audienceAge: "(15 a 65 anos)",
       audienceInterests: "apaixonados por",
       audienceTopics: "tecnologia, games, viagem, cultura local",
       audiencePlatforms: "e conteúdo real-time em plataformas como YouTube, Kick, Instagram e TikTok.",
+      scrollHint: "Arraste para o lado para ver a tabela completa",
     },
     // Contato
     contato: {
@@ -142,7 +148,12 @@ export const translations = {
       dados: "Data",
       parcerias: "Partnerships",
       contato: "Contact",
-      faleConosco: "Contact Us",
+  faleConosco: "Contact Us",
+  menu: "Menu",
+  language: "Language",
+  close: "Close",
+  openMenu: "Open menu",
+  closeMenu: "Close menu",
     },
     // Hero
     hero: {
@@ -237,10 +248,11 @@ export const translations = {
       opp4: "Organic product placement in lives and Reels",
       audienceTitle: "Target Audience",
       audienceDesc: "Young people and adults",
-      audienceAge: "(18 to 45 years old)",
+  audienceAge: "(15 to 65 years old)",
       audienceInterests: "passionate about",
       audienceTopics: "technology, games, travel, local culture",
       audiencePlatforms: "and real-time content on platforms like YouTube, Kick, Instagram and TikTok.",
+      scrollHint: "Swipe sideways to view the full table",
     },
     // Contato
     contato: {
@@ -272,10 +284,15 @@ export const translations = {
       objetivos: "Objetivos",
       veiculos: "Plataformas",
       transmissoes: "Transmisiones",
-      dados: "Datos",
-      parcerias: "Asociaciones",
-      contato: "Contacto",
-      faleConosco: "Contáctenos",
+  dados: "Datos",
+  parcerias: "Asociaciones",
+  contato: "Contacto",
+  faleConosco: "Contáctenos",
+  menu: "Menú",
+  language: "Idioma",
+  close: "Cerrar",
+  openMenu: "Abrir menú",
+  closeMenu: "Cerrar menú",
     },
     // Hero
     hero: {
@@ -370,10 +387,11 @@ export const translations = {
       opp4: "Product placement orgánico en lives y Reels",
       audienceTitle: "Público Objetivo",
       audienceDesc: "Jóvenes y adultos",
-      audienceAge: "(18 a 45 años)",
+  audienceAge: "(15 a 65 años)",
       audienceInterests: "apasionados por",
       audienceTopics: "tecnología, juegos, viajes, cultura local",
       audiencePlatforms: "y contenido en tiempo real en plataformas como YouTube, Kick, Instagram y TikTok.",
+      scrollHint: "Desliza hacia el lado para ver toda la tabla",
     },
     // Contato
     contato: {

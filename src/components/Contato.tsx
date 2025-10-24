@@ -87,12 +87,12 @@ const Contato = () => {
         <NoiseOverlay alpha={65} color="#E11D48" tintStrength={0.48} />
       </motion.div>
 
-      {/* Asset de fundo - Ativo 33 */}
+      {/* Asset de fundo - Ativo 44 */}
       <img
-        src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Contato/Ativo%2033@300x.png"
+        src="/Assets/Ativo 44@4x.webp"
         alt=""
         aria-hidden="true"
-        className="absolute bottom-0 left-0 z-0 h-full w-auto object-contain opacity-10 sm:opacity-100 scale-75 lg:scale-100"
+        className="pointer-events-none select-none absolute bottom-0 left-0 z-0 h-auto w-full lg:h-full lg:w-auto object-contain object-left-bottom opacity-15 sm:opacity-100 scale-90 sm:scale-100 origin-bottom-left"
         loading="lazy"
       />
 
@@ -118,7 +118,7 @@ const Contato = () => {
                   <motion.img
                     src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Contato/Ativo%2034.png"
                     alt="Vamos Juntos Nessa Jornada"
-                    className="h-24 sm:h-32 md:h-40 lg:h-48 w-auto object-contain"
+                    className="h-44 sm:h-32 md:h-40 lg:h-48 w-auto object-contain"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}

@@ -6,6 +6,9 @@ import { useLanguage } from "@/i18n/LanguageContext";
 const Footer = () => {
     const { t } = useLanguage();
     const currentYear = new Date().getFullYear();
+    const jebadevWhatsappMessage = encodeURIComponent(
+        "Olá! Gostei do site, quero conhecer mais sobre os serviços e saber valores para um possível orçamento."
+    );
 
     const socialLinks = [
         {
@@ -128,10 +131,11 @@ const Footer = () => {
                             <p>
                                 Feito por{" "}
                                 <a
-                                    href="https://wa.me/5521968793611"
+                                    href={`https://wa.me/5521968793611?text=${jebadevWhatsappMessage}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-primary hover:text-primary/80 transition-colors font-semibold"
+                                    aria-label="Abrir conversa no WhatsApp com JebaDev"
                                 >
                                     JebaDev
                                 </a>

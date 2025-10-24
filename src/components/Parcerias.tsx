@@ -100,15 +100,15 @@ const ContentColumn = () => (
 );
 
 const HeaderSection = () => (
-  <div className="flex items-center gap-4 w-full">
-    <motion.div {...ICON_ANIMATION} className="flex-shrink-0">
+  <div className="flex w-full flex-col items-center text-center">
+    <img
+      src="/Assets/Ativo 43@4x.webp"
+      alt="Oportunidades de Parceria"
+      className="w-full max-w-[340px] sm:max-w-[280px] md:max-w-[360px] lg:max-w-[460px] h-auto object-contain"
+    />
+    <motion.div {...ICON_ANIMATION} className="mt-2 sm:mt-3">
       <Users className="w-12 h-12 md:w-14 md:h-14 text-primary" strokeWidth={1.6} />
     </motion.div>
-    <img
-      src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Parcerias/OPORTUNIDADES%20DE%20PARCERIA@4x.webp"
-      alt="Oportunidades de Parceria"
-      className="h-14 sm:h-20 md:h-24 lg:h-32 w-auto object-contain"
-    />
   </div>
 );
 

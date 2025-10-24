@@ -1,27 +1,29 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Check, X, Sparkles, Zap, Radio, Globe, Users, TrendingUp } from "lucide-react";
+import { Check, X, Sparkles, Zap, Radio, Globe, Users, TrendingUp, ArrowRight } from "lucide-react";
 import { NoiseOverlay } from "@/components/ui/noise-overlay";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const StatusIcon = ({ status, partialText }: { status: boolean | string; partialText: string }) => {
   if (status === true) {
     return (
-      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-500/20">
-        <Check className="h-5 w-5 text-green-400" />
+      <div className="flex h-7 w-7 items-center justify-center rounded-full bg-green-500/20 sm:h-8 sm:w-8">
+        <Check className="h-4 w-4 text-green-400 sm:h-5 sm:w-5" />
       </div>
     );
   }
   if (status === "partial") {
     return (
-      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-yellow-500/20">
-        <span className="text-xs font-semibold text-yellow-400">{partialText}</span>
+      <div className="flex h-7 w-7 items-center justify-center rounded-full bg-yellow-500/20 sm:h-8 sm:w-8">
+        <span className="text-[10px] font-semibold tracking-tight text-yellow-400 sm:text-xs">
+          {partialText}
+        </span>
       </div>
     );
   }
   return (
-    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-red-500/20">
-      <X className="h-5 w-5 text-red-400" />
+    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-red-500/20 sm:h-8 sm:w-8">
+      <X className="h-4 w-4 text-red-400 sm:h-5 sm:w-5" />
     </div>
   );
 };
@@ -113,7 +115,7 @@ const PitchComparativo = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden py-24">
+    <section ref={sectionRef} className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
       {/* Background Layer */}
       <motion.div
         className="absolute inset-0 -z-10"
@@ -132,84 +134,90 @@ const PitchComparativo = () => {
       </motion.div>
 
       <motion.div
-        className="container relative z-10 mx-auto px-4"
+        className="container relative z-10 mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8"
         style={{ y: sectionY, opacity: sectionOpacity }}
       >
         <div className="mx-auto max-w-7xl">
           {/* Header */}
-          <div className="mb-16 text-center px-4 sm:px-0">
-            <div className="mb-4 flex items-center justify-center gap-3">
-              <TrendingUp className="h-8 w-8 sm:h-10 sm:w-10 text-primary" />
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white font-['Inter',sans-serif]">
+          <div className="mb-12 flex flex-col items-center px-2 text-center sm:mb-14 lg:mb-16 sm:px-0">
+            <div className="mb-3 flex items-center justify-center gap-3 sm:mb-4">
+              <TrendingUp className="h-8 w-8 text-primary sm:h-10 sm:w-10" />
+              <h2 className="text-balance text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl font-['Inter',sans-serif]">
                 {t.pitch.title}
               </h2>
             </div>
-            <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl text-muted-foreground">
+            <p className="mx-auto max-w-2xl text-pretty text-sm text-muted-foreground sm:max-w-3xl sm:text-base md:text-lg">
               {t.pitch.subtitle}
             </p>
           </div>
 
           {/* Tabela Comparativa */}
-          <div className="mb-16 overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/5 via-transparent to-accent/5">
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[600px]">
-                <thead>
-                  <tr className="border-b border-primary/20 bg-primary/10">
-                    <th className="p-3 sm:p-4 text-left text-xs sm:text-sm md:text-base font-semibold text-white">
-                      {t.pitch.element}
-                    </th>
-                    <th className="p-3 sm:p-4 text-center text-xs sm:text-sm md:text-base font-semibold text-primary">
-                      {t.pitch.vaiComLive}
-                    </th>
-                    <th className="p-3 sm:p-4 text-center text-xs sm:text-sm md:text-base font-semibold text-muted-foreground">
-                      {t.pitch.vloggers}
-                    </th>
-                    <th className="p-3 sm:p-4 text-center text-xs sm:text-sm md:text-base font-semibold text-muted-foreground">
-                      {t.pitch.irlStreamers}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {comparisonData.map((row, index) => (
-                    <motion.tr
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                      viewport={{ once: true }}
-                      className="border-b border-primary/10 transition-colors hover:bg-primary/5"
-                    >
-                      <td className="p-3 sm:p-4 text-xs sm:text-sm md:text-base text-white">
-                        {row.element}
-                      </td>
-                      <td className="p-3 sm:p-4">
-                        <div className="flex justify-center">
-                          <StatusIcon status={row.vaiComLive} partialText={t.pitch.partial} />
-                        </div>
-                      </td>
-                      <td className="p-3 sm:p-4">
-                        <div className="flex justify-center">
-                          <StatusIcon status={row.vloggers} partialText={t.pitch.partial} />
-                        </div>
-                      </td>
-                      <td className="p-3 sm:p-4">
-                        <div className="flex justify-center">
-                          <StatusIcon status={row.irlStreamers} partialText={t.pitch.partial} />
-                        </div>
-                      </td>
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
+          <div className="mb-14 sm:mb-16">
+            <div className="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[680px] border-collapse">
+                    <thead>
+                      <tr className="border-b border-primary/20 bg-primary/10">
+                        <th className="p-3 sm:p-4 text-left text-xs font-semibold text-white sm:text-sm md:text-base">
+                          {t.pitch.element}
+                        </th>
+                        <th className="p-3 sm:p-4 text-center text-xs font-semibold text-primary sm:text-sm md:text-base">
+                          {t.pitch.vaiComLive}
+                        </th>
+                        <th className="p-3 sm:p-4 text-center text-xs font-semibold text-muted-foreground sm:text-sm md:text-base">
+                          {t.pitch.vloggers}
+                        </th>
+                        <th className="p-3 sm:p-4 text-center text-xs font-semibold text-muted-foreground sm:text-sm md:text-base">
+                          {t.pitch.irlStreamers}
+                        </th>
+                      </tr>
+                    </thead>
+                      <tbody>
+                        {comparisonData.map((row, index) => (
+                          <motion.tr
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.05 }}
+                            viewport={{ once: true }}
+                            className="border-b border-primary/10 transition-colors hover:bg-primary/5 last:border-b-0"
+                          >
+                            <td className="p-3 text-sm text-white sm:p-4 sm:text-base md:text-lg">
+                              {row.element}
+                            </td>
+                            <td className="p-3 sm:p-4">
+                              <div className="flex justify-center">
+                                <StatusIcon status={row.vaiComLive} partialText={t.pitch.partial} />
+                              </div>
+                            </td>
+                            <td className="p-3 sm:p-4">
+                              <div className="flex justify-center">
+                                <StatusIcon status={row.vloggers} partialText={t.pitch.partial} />
+                              </div>
+                            </td>
+                            <td className="p-3 sm:p-4">
+                              <div className="flex justify-center">
+                                <StatusIcon status={row.irlStreamers} partialText={t.pitch.partial} />
+                              </div>
+                            </td>
+                          </motion.tr>
+                        ))}
+                      </tbody>
+                    </table>
+              </div>
+              <div className="flex items-center justify-center gap-2 bg-primary/10 px-3 py-2 text-xs font-medium text-primary sm:hidden">
+                <ArrowRight className="h-4 w-4 animate-bounce" aria-hidden="true" />
+                <span>{t.pitch.scrollHint}</span>
+              </div>
             </div>
           </div>
 
           {/* Por que é único */}
           <div className="mb-16">
-            <h3 className="mb-8 text-center text-2xl font-bold text-white md:text-3xl font-['Inter',sans-serif]">
+            <h3 className="mb-6 text-center text-2xl font-bold text-white sm:mb-8 md:text-3xl font-['Inter',sans-serif]">
               {t.pitch.whyUnique}
             </h3>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6">
               {diferenciais.map((item, index) => (
                 <motion.div
                   key={index}
@@ -217,13 +225,13 @@ const PitchComparativo = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="group rounded-xl border border-primary/20 bg-gradient-to-br from-primary/10 to-transparent p-6 transition-all hover:border-primary/40 hover:shadow-lg hover:shadow-primary/20"
+                  className="group rounded-xl border border-primary/20 bg-gradient-to-br from-primary/10 to-transparent p-5 transition-all hover:border-primary/40 hover:shadow-lg hover:shadow-primary/20 sm:p-6"
                 >
-                  <item.icon className="mb-4 h-10 w-10 text-primary transition-transform group-hover:scale-110" />
-                  <h4 className="mb-2 text-lg font-semibold text-white">
+                  <item.icon className="mb-3 h-9 w-9 text-primary transition-transform group-hover:scale-110 sm:mb-4 sm:h-10 sm:w-10" />
+                  <h4 className="mb-2 text-base font-semibold text-white sm:text-lg">
                     {item.title}
                   </h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground sm:text-base">
                     {item.description}
                   </p>
                 </motion.div>
@@ -238,7 +246,7 @@ const PitchComparativo = () => {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 to-transparent p-8"
+              className="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 to-transparent p-6 sm:p-8"
             >
               <div className="mb-4 flex items-center gap-3">
                 <Zap className="h-8 w-8 text-primary" />
@@ -246,26 +254,26 @@ const PitchComparativo = () => {
                   {t.pitch.techTitle}
                 </h3>
               </div>
-              <ul className="space-y-3 text-muted-foreground">
+              <ul className="space-y-3 text-sm text-muted-foreground sm:text-base">
                 <li className="flex items-start gap-2">
-                  <Check className="mt-1 h-5 w-5 shrink-0 text-green-400" />
-                  <span>{t.pitch.tech1}</span>
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-green-400" />
+                  <span className="text-pretty">{t.pitch.tech1}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-1 h-5 w-5 shrink-0 text-green-400" />
-                  <span>{t.pitch.tech2}</span>
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-green-400" />
+                  <span className="text-pretty">{t.pitch.tech2}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-1 h-5 w-5 shrink-0 text-green-400" />
-                  <span>{t.pitch.tech3}</span>
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-green-400" />
+                  <span className="text-pretty">{t.pitch.tech3}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-1 h-5 w-5 shrink-0 text-green-400" />
-                  <span>{t.pitch.tech4}</span>
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-green-400" />
+                  <span className="text-pretty">{t.pitch.tech4}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-1 h-5 w-5 shrink-0 text-green-400" />
-                  <span>{t.pitch.tech5}</span>
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-green-400" />
+                  <span className="text-pretty">{t.pitch.tech5}</span>
                 </li>
               </ul>
             </motion.div>
@@ -275,7 +283,7 @@ const PitchComparativo = () => {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8"
+              className="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-6 sm:p-8"
             >
               <div className="mb-4 flex items-center gap-3">
                 <Sparkles className="h-8 w-8 text-accent" />
@@ -283,22 +291,22 @@ const PitchComparativo = () => {
                   {t.pitch.oppTitle}
                 </h3>
               </div>
-              <ul className="space-y-3 text-muted-foreground">
+              <ul className="space-y-3 text-sm text-muted-foreground sm:text-base">
                 <li className="flex items-start gap-2">
-                  <Check className="mt-1 h-5 w-5 shrink-0 text-yellow-400" />
-                  <span>{t.pitch.opp1}</span>
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-yellow-400" />
+                  <span className="text-pretty">{t.pitch.opp1}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-1 h-5 w-5 shrink-0 text-yellow-400" />
-                  <span>{t.pitch.opp2}</span>
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-yellow-400" />
+                  <span className="text-pretty">{t.pitch.opp2}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-1 h-5 w-5 shrink-0 text-yellow-400" />
-                  <span>{t.pitch.opp3}</span>
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-yellow-400" />
+                  <span className="text-pretty">{t.pitch.opp3}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-1 h-5 w-5 shrink-0 text-yellow-400" />
-                  <span>{t.pitch.opp4}</span>
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-yellow-400" />
+                  <span className="text-pretty">{t.pitch.opp4}</span>
                 </li>
               </ul>
             </motion.div>
@@ -309,12 +317,12 @@ const PitchComparativo = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-12 rounded-2xl border border-primary/30 bg-gradient-to-r from-primary/15 via-accent/10 to-primary/15 p-8 text-center shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_80px_rgba(225,29,72,0.15)]"
+            className="mt-10 rounded-2xl border border-primary/30 bg-gradient-to-r from-primary/15 via-accent/10 to-primary/15 p-6 text-center shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_80px_rgba(225,29,72,0.15)] sm:mt-12 sm:p-8"
           >
             <h3 className="mb-4 text-2xl font-bold text-white font-['Inter',sans-serif]">
               {t.pitch.audienceTitle}
             </h3>
-            <p className="text-lg text-white font-['Inter',sans-serif]">
+            <p className="text-pretty text-base text-white font-['Inter',sans-serif] sm:text-lg">
               {t.pitch.audienceDesc} <span className="font-bold text-primary">{t.pitch.audienceAge}</span> {t.pitch.audienceInterests}{" "}
               <span className="font-bold text-accent">{t.pitch.audienceTopics}</span> {t.pitch.audiencePlatforms}
             </p>

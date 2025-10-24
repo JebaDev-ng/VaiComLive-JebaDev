@@ -64,7 +64,7 @@ export default function Objetivos() {
     <section
       ref={sectionRef}
       id="objetivos"
-      className="relative flex h-screen w-full items-center justify-center overflow-hidden text-white"
+      className="relative flex min-h-[calc(100vh-72px)] w-full flex-col items-center justify-center overflow-hidden bg-[#0F0F10] text-white lg:h-screen"
     >
       <motion.div
         className="pointer-events-none absolute inset-0"
@@ -72,8 +72,24 @@ export default function Objetivos() {
       >
         <div className="absolute inset-0 bg-[#1D1D1E]" />
         
-        {/* Asset vermelho - esquerda */}
-        <div aria-hidden="true" className="absolute inset-0 opacity-20 md:opacity-100">
+        {/* Asset vermelho/amarelo - mobile/tablet */}
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 opacity-40 sm:opacity-50 md:opacity-100 lg:hidden">
+          <img
+            src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Objetivo/Assets-Objetivo-1.webp"
+            alt=""
+            className="pointer-events-none absolute bottom-[-1%] left-0 w-[36vw] max-w-[180px] translate-x-[-8%] object-contain object-left-bottom sm:w-[34vw] sm:max-w-[200px] sm:translate-x-[-6%] md:w-[32vw] md:max-w-[220px] md:translate-x-[-4%]"
+            loading="lazy"
+          />
+          <img
+            src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Objetivo/Assets-Objetivo-2.webp"
+            alt=""
+            className="pointer-events-none absolute bottom-[-2%] right-0 w-[36vw] max-w-[180px] translate-x-[8%] object-contain object-right-bottom sm:w-[34vw] sm:max-w-[200px] sm:translate-x-[6%] md:w-[32vw] md:max-w-[220px] md:translate-x-[4%]"
+            loading="lazy"
+          />
+        </div>
+
+        {/* Asset vermelho - desktop */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden opacity-20 md:opacity-100 lg:block">
           <img
             src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Objetivo/Assets-Objetivo-1.webp"
             alt=""
@@ -81,9 +97,9 @@ export default function Objetivos() {
             loading="lazy"
           />
         </div>
-        
-        {/* Asset amarelo - direita */}
-        <div aria-hidden="true" className="absolute inset-0 opacity-20 md:opacity-100">
+
+        {/* Asset amarelo - desktop */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden opacity-20 md:opacity-100 lg:block">
           <img
             src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Objetivo/Assets-Objetivo-2.webp"
             alt=""
@@ -106,26 +122,33 @@ export default function Objetivos() {
       </motion.div>
 
       <motion.div
-        className="relative z-10 flex w-full max-w-[1600px] flex-col items-center gap-12 px-6 py-8 md:gap-16 md:px-12 lg:px-20"
+        className="relative z-10 flex w-full max-w-[1200px] flex-col items-center gap-10 px-6 py-12 sm:gap-12 md:gap-16 md:px-12 lg:max-w-[1600px] lg:px-20"
         style={{ y: objetivosY, scale: objetivosScale, opacity: objetivosOpacity }}
       >
         <motion.div
-          className="flex w-full flex-col items-center gap-6 text-center px-4 sm:px-0"
+          className="flex w-full flex-col items-center gap-6 px-2 text-center sm:px-0"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <img
-            src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Objetivo/Assets-Objetivo-Titulo.webp"
-            alt="Objetivos do projeto"
-            className="w-full max-w-[280px] sm:max-w-[600px] lg:max-w-[1100px] object-contain"
-          />
-          <div aria-hidden="true" className="h-[4px] w-full max-w-[680px] bg-[#1B3A6F]" />
+          <picture>
+            <source
+              media="(min-width: 640px)"
+              srcSet="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Objetivo/Assets-Objetivo-Titulo.webp"
+            />
+            <img
+              src="/Assets/Ativo%2036@4x.webp"
+              alt="Objetivos do projeto"
+              className="w-full max-w-[260px] object-contain sm:max-w-[520px] lg:max-w-[1100px]"
+              loading="lazy"
+            />
+          </picture>
+          <div aria-hidden="true" className="h-[4px] w-full max-w-[320px] bg-[#1B3A6F] sm:max-w-[560px] lg:max-w-[680px]" />
         </motion.div>
 
         <motion.div
-          className="grid w-full gap-6 text-left sm:grid-cols-2 sm:gap-8 md:gap-10 lg:grid-cols-4 lg:gap-14 px-4 sm:px-0"
+          className="flex w-full flex-col items-center gap-6 px-2 text-center sm:grid sm:grid-cols-2 sm:gap-8 sm:px-0 sm:text-left md:gap-10 lg:grid-cols-4 lg:gap-14"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -143,7 +166,7 @@ export default function Objetivos() {
           {objectivesContent.map(({ svgFileName, description }, index) => (
             <motion.article
               key={svgFileName}
-              className="flex flex-col gap-5 items-center sm:items-start"
+              className="group flex flex-col items-center gap-5 sm:items-start"
               variants={{
                 hidden: { opacity: 0, y: 30 },
                 visible: {
@@ -157,9 +180,9 @@ export default function Objetivos() {
               <img
                 src={svgFileName}
                 alt={description}
-                className="w-full max-w-full sm:max-w-[240px] lg:max-w-[280px] object-contain"
+                className="w-full max-w-[220px] object-contain sm:max-w-[240px] lg:max-w-[280px]"
               />
-              <p className="text-[15px] leading-[1.5] text-white md:text-[16px] text-center sm:text-left">
+              <p className="text-balance text-[15px] leading-[1.55] text-white md:text-[16px] sm:text-left">
                 {description}
               </p>
             </motion.article>

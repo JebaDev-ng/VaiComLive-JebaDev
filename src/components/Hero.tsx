@@ -45,7 +45,7 @@ function Hero(): JSX.Element {
     <section
       ref={sectionRef}
       id="hero"
-  className="relative flex h-auto min-h-[calc(100vh-72px)] w-full items-center justify-start overflow-hidden bg-black/80 px-6 pt-20 pb-16 sm:pt-24 sm:pb-20 md:px-10 lg:min-h-screen lg:h-screen lg:items-center lg:justify-center lg:px-16 lg:pt-0 lg:pb-0"
+      className="relative flex h-auto min-h-[calc(100vh-72px)] w-full flex-col items-center justify-center overflow-hidden bg-black/80 px-6 pt-20 pb-16 sm:pt-24 sm:pb-20 md:px-10 lg:h-screen lg:min-h-screen lg:flex-row lg:items-center lg:justify-center lg:px-16 lg:pt-0 lg:pb-0"
     >
       <motion.div
         className="pointer-events-none absolute inset-0"
@@ -56,7 +56,7 @@ function Hero(): JSX.Element {
           <img
             src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Hero/Assets-hero-bg@4x.webp"
             alt=""
-            className="h-full w-full object-cover object-bottom sm:object-contain sm:object-left"
+            className="h-full min-h-[720px] w-full object-contain object-top sm:min-h-[760px] sm:object-contain sm:object-left lg:min-h-0 lg:object-cover lg:object-bottom"
             loading="lazy"
           />
         </div>
@@ -75,11 +75,11 @@ function Hero(): JSX.Element {
       </motion.div>
 
       <motion.div
-        className="relative z-10 flex w-full max-w-[1200px] flex-col items-center justify-center gap-8 sm:gap-10 md:gap-12 lg:flex-row lg:justify-between lg:items-start"
+        className="relative z-10 flex w-full max-w-[1200px] flex-col items-center justify-center gap-6 sm:gap-8 md:gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-12"
         style={{ y: heroY, scale: heroScale, opacity: heroOpacity }}
       >
         <motion.figure
-          className="w-full max-w-[280px] sm:max-w-[360px] lg:max-w-[460px] px-4 sm:px-0"
+          className="w-full max-w-[240px] px-4 sm:max-w-[320px] sm:px-0 lg:max-w-[460px]"
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{
@@ -96,7 +96,7 @@ function Hero(): JSX.Element {
         </motion.figure>
 
         <motion.div
-          className="flex w-full max-w-[540px] flex-col text-left text-white px-4 sm:px-0"
+          className="flex w-full max-w-[520px] flex-col items-center px-4 text-center text-white sm:px-0 lg:items-start lg:text-left"
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{
@@ -108,7 +108,7 @@ function Hero(): JSX.Element {
           <motion.img
             src="https://gdyjhpzpnpattlyvmkzj.supabase.co/storage/v1/object/public/Assets/Assets-Hero/Assets-hero-apresentacao@4x.webp"
             alt="Titulo Apresentação"
-            className="w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[460px] object-contain"
+            className="w-full max-w-[260px] object-contain sm:max-w-[360px] lg:max-w-[460px]"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -120,7 +120,7 @@ function Hero(): JSX.Element {
           />
 
           <motion.p
-            className="mt-8 font-hero-body text-[clamp(0.875rem,1.5vw,1.125rem)] leading-[1.6] text-white"
+            className="mt-6 text-pretty font-hero-body text-[clamp(0.875rem,1.5vw,1.125rem)] leading-[1.6] text-white text-center lg:text-left"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -133,7 +133,7 @@ function Hero(): JSX.Element {
           </motion.p>
 
           <motion.p
-            className="mt-4 font-hero-body text-[clamp(0.875rem,1.5vw,1.125rem)] leading-[1.6] text-white"
+            className="mt-3 text-pretty font-hero-body text-[clamp(0.875rem,1.5vw,1.125rem)] leading-[1.6] text-white text-center lg:text-left"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
